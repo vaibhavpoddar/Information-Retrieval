@@ -1,0 +1,82 @@
+Information Retrieval (CS60092)
+Assignment 3
+Group 9
+
+Vaibhav Poddar (16CS10051)
+Shubhanan Shriniket (16CS10049)
+
+######################################################################
+
+1) Relevance Feedback (Rocchio) vs tf-idf (lnc.ltc)
+
+    i)  Mean Average Precision @ 20
+
+        mAP@20 for Rocchio Feedback with α = 1.0, β = 1.0, γ = 0.5: 0.456
+        mAP@20 for Rocchio Feedback with α = 0.5, β = 0.5, γ = 0.5: 0.461
+        mAP@20 for Rocchio Feedback with α = 1.0, β = 0.5, γ = 0.0: 0.447
+
+        mAP@20 for lnc.ltc vectorization: 0.353
+
+        Here, the mAP@20 values are significantly higher for the RF method; indicating that relevant documents are more near each other (contain more similar terms) than near irrelevant ones in the vocabulary vector space, and that the queries have sufficient terms; and justifying the use of a feedback system.
+
+
+    ii) Normalized Discounted Cumulative Gain @ 20
+
+        averNDCG@20 for Rocchio Feedback with α = 1.0, β = 1.0, γ = 0.5: 0.607
+        averNDCG@20 for Rocchio Feedback with α = 0.5, β = 0.5, γ = 0.5: 0.614
+        averNDCG@20 for Rocchio Feedback with α = 1.0, β = 0.5, γ = 0.0: 0.597
+
+        averNDCG@20 for lnc.ltc vectorization: 0.502
+
+        Here, the averNDCG@20 values are significantly higher for the RF method; indicating that the most relevant documents are near other relevant documents in the vocabulary vector space.
+
+
+2) Pseudo Relevance Feedback vs tf-idf (lnc.ltc)
+
+    i)  Mean Average Precision @ 20
+
+        mAP@20 for Rocchio Pseudo Relevance Feedback with α = 1.0, β = 1.0, γ = 0.5: 0.373
+        mAP@20 for Rocchio Pseudo Relevance Feedback with α = 0.5, β = 0.5, γ = 0.5: 0.373
+        mAP@20 for Rocchio Pseudo Relevance Feedback with α = 1.0, β = 0.5, γ = 0.0: 0.369
+
+        mAP@20 for lnc.ltc vectorization: 0.353
+
+        Here, the mAP@20 values are only slightly higher for the PsRF method. The initially obtained relevant documents haven't helped much; possibly indicating a query drift.
+
+    ii) Normalized Discounted Cumulative Gain @ 20
+
+        averNDCG@20 for Rocchio Pseudo Relevance Feedback with α = 1.0, β = 1.0, γ = 0.5: 0.515
+        averNDCG@20 for Rocchio Pseudo Relevance Feedback with α = 0.5, β = 0.5, γ = 0.5: 0.515
+        averNDCG@20 for Rocchio Pseudo Relevance Feedback with α = 1.0, β = 0.5, γ = 0.0: 0.511
+
+        averNDCG@20 for lnc.ltc vectorization: 0.502
+
+        Here, the averNDCG@20 values are only slightly higher for the PsRF method, so it's not faring better in terms of results ranking too. Considering the time taken, a standard ltc.lnc vectorization seems better for this dataset.
+
+
+3) Pseudo Relevance Feedback vs Relevance Feedback
+
+    i)  Mean Average Precision @ 20
+    
+        mAP@20 for Rocchio Feedback with α = 1.0, β = 1.0, γ = 0.5: 0.456
+        mAP@20 for Rocchio Feedback with α = 0.5, β = 0.5, γ = 0.5: 0.461
+        mAP@20 for Rocchio Feedback with α = 1.0, β = 0.5, γ = 0.0: 0.447
+
+        mAP@20 for Rocchio Pseudo Relevance Feedback with α = 1.0, β = 1.0, γ = 0.5: 0.373
+        mAP@20 for Rocchio Pseudo Relevance Feedback with α = 0.5, β = 0.5, γ = 0.5: 0.373
+        mAP@20 for Rocchio Pseudo Relevance Feedback with α = 1.0, β = 0.5, γ = 0.0: 0.369
+
+        Here, the mAP@20 values are higher for RF than PsRF, indicating that documents with judgement score = 2 are much more relevant than the top 10 retrieved documents.
+
+    ii) Normalized Discounted Cumulative Gain @ 20
+
+        averNDCG@20 for Rocchio Feedback with α = 1.0, β = 1.0, γ = 0.5: 0.607
+        averNDCG@20 for Rocchio Feedback with α = 0.5, β = 0.5, γ = 0.5: 0.614
+        averNDCG@20 for Rocchio Feedback with α = 1.0, β = 0.5, γ = 0.0: 0.597
+
+        averNDCG@20 for Rocchio Pseudo Relevance Feedback with α = 1.0, β = 1.0, γ = 0.5: 0.515
+        averNDCG@20 for Rocchio Pseudo Relevance Feedback with α = 0.5, β = 0.5, γ = 0.5: 0.515
+        averNDCG@20 for Rocchio Pseudo Relevance Feedback with α = 1.0, β = 0.5, γ = 0.0: 0.511
+
+        Here, the averNDCG@20 values are higher for RF than PsRF. 
+
